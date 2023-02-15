@@ -1,0 +1,89 @@
+﻿@model AdvanceTourismGuide.Models.CombineModel
+    @{
+        ViewBag.Title = "UserHome";
+        Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+    }
+
+    <style>
+        .body {
+            margin-left: 10%;
+            margin-top: 5px;
+            position: relative;
+        }
+
+        .searchbtn {
+            margin-left: 10%;
+            margin-top: 7px;
+        }
+    </style>
+
+    <div style="font-size:20px;color:black;height:50px;width:100%;background-color:#b5ff00">
+        @using (Html.BeginForm())
+        {
+
+
+
+            <span>  </span> <span> <input type="text" name="searchstring" class="searchbtn" /> </span>
+            <span> <input type="submit" value="Search" class="btn btn-primary " /></span>
+
+            if (ViewBag.ResultsFor != null)
+            {
+                <span>Showing Result For:@ViewBag.ResultsFor</span>
+            }
+            else
+            {
+                <h1>entering name is not avilable</h1>
+            }
+
+
+        }
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        <div class="row body">
+            @foreach (var item in Model.Places)
+            {
+                <div class="col-md-6">
+
+                    <img src="@Url.Content(item.Place_Image)" style="width:500px; height:400px" />
+
+                    <div style="color:brown;">
+                        <h1> @item.Place_Name  </h1>
+
+                    </div>
+                    <div>
+                        @item.Discription
+                    </div>
+
+
+                    <input type="submit" name="Visit" value="visit" class="alert-success loginBotton" onclick="Location.href='@Url.Action("Visit","Places")'" />
+
+                    <h2 clss="btn btn-primary"> @Html.ActionLink("Visit Now", "Visit", "Places")</h2>
+
+                    <input type="submit" name="Visit" value="Visit" class="alert-success loginBotton" />
+                </div>
+            }
+
+        </div>
+    }
+    @*if we have to show content of other table then we can show like this
+            <div class="row">
+            @foreach (var item in Model.Cities)
+            {
+                <div class="col-md-3">
+
+                    <img src="@Url.Content(item.City_Name)" style="width:400px; height:300px" />
+
+                    <div>
+                        @item.City_Id
+
+                    </div>
+                    <div>
+                        @item.City_Name
+                    </div>
+                    <p> <a clss="btn btn-primary" href="/home/order/1">Order</a> </p>
+                </div>
+            }
+
+        </div>  *@

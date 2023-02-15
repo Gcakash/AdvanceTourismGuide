@@ -1,0 +1,117 @@
+﻿@model AdvanceTourismGuide.Models.UserInfo
+
+@{
+    ViewBag.Title = "signin";
+
+}
+
+<style>
+    .signup {
+        background-color: rgba(21, 42, 51, 0.60);
+        height: 600px;
+        width: 500px;
+    }
+
+    .signupBotton {
+        margin-left: 25%;
+        font-size: 30px;
+        background-color: yellow;
+    }
+
+    .signupBackground {
+        height: 650px;
+        width: 100%;
+        background-image: url("/Content/images/9.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: -29px;
+        /* opacity: 0.7;
+        */
+    }
+    
+</style>
+<div class="signupBackground">
+    <div class="container body-content signup">
+        <br />
+        <br />
+        <h1 style="opacity:1;color:yellowgreen;font-size:50px;font-family:'Times New Roman' ;margin-left:10px"> Welcome </h1>
+
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+               
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group"style="opacity:1;color:yellowgreen">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10"style="opacity:1;color:yellowgreen">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group"style="opacity:1;color:yellowgreen">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group"style="opacity:1;color:yellowgreen">
+                    @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group"style="opacity:1;color:yellowgreen">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group"style="opacity:1;color:yellowgreen">
+                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group"style="opacity:1;color:yellowgreen">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Sign Up" class="alert-success signupBotton" />
+                    </div>
+                    @if (ViewBag.message != null)
+                    {
+                        <br /><br /> <span style="padding:5px;color:white;background-color:red;">user alredy exist try another username.@Html.ActionLink("Resister", "Create")</span>
+                    }
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </div>
+</div>

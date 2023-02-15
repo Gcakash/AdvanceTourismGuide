@@ -1,0 +1,62 @@
+﻿@model IEnumerable<AdvanceTourismGuide.Models.Hotel_Booking>
+
+@{
+    ViewBag.Title = "UserIndex";
+    Layout = "~/Views/Shared/UserLayoutPage.cshtml";
+}
+
+@{ string username = Session["username"].ToString();
+}
+<div class="container body-content">
+    <h2> Your Hotel Booking Request List</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Place_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Approve_Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Coment)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.User_Name == username)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Place_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Approve_Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Coment)
+                </td>
+               
+            </tr>
+            }
+        }
+
+    </table>
+</div>

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "PlaceMap";
+    Layout = "~/Views/Shared/UserLayoutPage";
+}
+
+<h2>PlaceMap</h2>
+<style>
+    /* Set the size of the div element that contains the map */
+    #map {
+        height: 500px; /* The height is 400 pixels */
+        width: 100%; /* The width is the width of the web page */
+    }
+</style>
+<div>
+
+
+
+    <h3> Maps for the ....place</h3>
+   
+    <div id="map"></div>
+    <script>
+        // Initialize and adding the map
+        function initMap() {
+            // The location 
+            var uluru = { lat: -25.344, lng: 131.036 };
+            // The map, centered 
+            var map = new google.maps.Map(
+                document.getElementById('map'), { zoom: 4, center: uluru });
+            // The marker
+            var marker = new google.maps.Marker({ position: uluru, map: map });
+        }
+    </script>
+    <!--
+        your api key AIzaSyDRNch5hN8sREIDgUMZXK3t-Co2-P6sKa8
+        AIzaSyDc1-KRNizFxRey6-OnaaczDE57r1R74EI
+    -->
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRNch5hN8sREIDgUMZXK3t-Co2-P6sKa8&callback=initMap">
+    </script>
+
+
+</div>

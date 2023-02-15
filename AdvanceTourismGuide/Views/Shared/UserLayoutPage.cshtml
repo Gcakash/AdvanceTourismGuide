@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script>
+        //orderEntry_OrderQuantity  this is the id which can be obtain by inspecting the order quantity tex box
+        $(document).ready(function () {
+            //on quantity change amount
+            $("#cost_noOfPeople").keyup(function () {
+                people = $("#cost_noOfPeople").val();
+                day = $("#cost_noOfDay").val();
+                cost = $("#cost_perday").val();
+                amount = (people + day) * cost;
+                $("cost_total").val(amount);
+            });
+        });
+
+        $(document).ready(function () {
+            //on quantity change amount
+            $("#cost_noOfDay").keyup(function () {
+                people = $("#cost_noOfPeople").val();
+                day = $("#cost_noOfDay").val();
+                cost = $("#cost_perday").val();
+                amount = (people + day) * cost;
+                $("cost_total").val(amount);
+            });
+        });
+
+
+    </script>
+
+    <style>
+        .nav-back-col {
+            background-color: black;
+        }
+        /* .navColor {
+            color: red;}*/
+
+        .SkyFooter {
+            background-color: black;
+            color: #00a651;
+            padding-top: 0px;
+            border-top: 1px solid #e7e7e7;
+            margin-bottom: 0px;
+        }
+
+        .bottom-footer {
+            border-top: 1px solid #00a651;
+            margin-top: 0px;
+            padding-top: 7px;
+            color: #00a651;
+        }
+
+        .footer-nav li {
+            display: inline;
+            padding: 0px 40px;
+        }
+
+        .row p {
+            color: #d4ff0f;
+        }
+
+        .footer-nav a {
+            color: #d4ff0f;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top navbar-right nav-back-col">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @* @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-b" })*@
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav media-right  " style="color:black">
+                    <li>@Html.ActionLink("Home", "UserPLace", "Places")</li>
+                    <li>@Html.ActionLink(" User Profile", "UserProfile", "UserInfoes")</li>
+                    <li>@Html.ActionLink(" booking Request Status", "Index", "Districts")</li> @* in the action link first is content to show
+        2nd is name of page and 3rd is name of folder or view*@
+                    <li class="dropdown">
+                        <a class="dropdown-toggle " data-toggle="dropdown" href="#" style="font-size:17px;">Your Booking Request  <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/Hotel_Booking/UserIndex">Hotel Booking Request</a></li>
+                            <li><a href="~/VehicalBookings/UserIndex">Vehical Booking Request</a></li>
+                            <li><a href="~/GuideBookings/UserIndex">Guide Booking Request</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li>
+                        <a href="#" class="btn btn-toolbar">
+
+                            <span class="glyphicon glyphicon-log-out"></span> Log out
+
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            @RenderBody()
+        </div>
+        <hr />
+        @*<footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+        <!-- Footer -->
+        <footer class="SkyFooter">
+            <font face="Roboto Condensed" size="4">
+                <center>
+                    <div class="container">
+                        <div class="row" style="margin-top: 7px;">
+                            <p> &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &copy; @DateTime.Now.Year Akash Gc.</p>
+                        </div>
+                        <div class="bottom-footer">
+                            <div class="col-md-12">
+                                <ul class="footer-nav">
+                                    <li> <a href="https://www.facebook.com/"> Facebook </a> </li>
+                                    <li> <a href="https://twitter.com/"> Twitter </a> </li>
+                                    <li> <a href="https://plus.google.com/"> Google+ </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </font>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

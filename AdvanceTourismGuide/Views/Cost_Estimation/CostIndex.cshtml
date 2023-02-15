@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AdvanceTourismGuide.Models.Cost_Estimation>
+
+@{
+    /**/
+
+    ViewBag.Title = "CostIndex";
+    Layout = "~/Views/Shared/UserLayoutPage.cshtml";
+}
+
+<h2>CostIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+@foreach (var item in Model)
+{
+
+  
+
+    <div class="form-group">
+        <div>Enter number of People</div>
+        <div> <input type="number" id="cost_noOfPeople" /></div>
+    </div>
+
+    <div class="form-group">
+        <div>Enter number of day</div>
+        <div> <input type="number" id="cost_noOfDay" /></div>
+    </div>
+
+    <div class="form-group">
+        <div>Estimated Cost Rate</div>
+        <div> <input type="number" readonly="readonly" value="@item.Avrage_Cost" id="cost_perday" /></div>
+    </div>
+
+    <div class="form-group">
+        <div>Total cost</div>
+        <div> <input type="number" value="" id="cost_total" /></div>
+    </div>
+
+    <div class="form-group">
+        <div> Place id</div>
+        <div> @Html.TextBoxFor(modelItem => item.Place_Id)</div>
+    </div>
+
+    <div class="form-group">
+        <div>Avrage Cost</div>
+        <div> @Html.TextBoxFor(modelItem => item.Avrage_Cost)</div>
+    </div>
+
+    <div class="form-group">
+
+        <div> <input type="submit" value="Calculate the Total Cost" id="Cost_submit" /></div>
+    </div>
+
+
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Cost_Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Cost_Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Cost_Id })
+    </div>
+
+}
+
+

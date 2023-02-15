@@ -1,0 +1,67 @@
+﻿@model AdvanceTourismGuide.Models.Place
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Place</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.City_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Place_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Place_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Place_Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Place_Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Place_Tag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Place_Tag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cost_Per_Day)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cost_Per_Day)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Place_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

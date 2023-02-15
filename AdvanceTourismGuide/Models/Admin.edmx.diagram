@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="244fddbd679940d18afda538aaf6dc18" Name="Diagram1" ZoomLevel="113">
+        <EntityTypeShape EntityType="ATGSModel1.AdminInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATGSModel1.City" Width="1.5" PointX="2.375" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATGSModel1.District" Width="1.5" PointX="2.375" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATGSModel1.Place" Width="1.5" PointX="4" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATGSModel1.Province" Width="1.5" PointX="2.375" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATGSModel1.Map" Width="1.5" PointX="0.625" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATGSModel1.Guide" Width="1.5" PointX="5.625" PointY="0.75" />
+        <EntityTypeShape EntityType="ATGSModel1.Hotel" Width="1.5" PointX="5.625" PointY="3.125" />
+        <EntityTypeShape EntityType="ATGSModel1.Vehical" Width="1.375" PointX="8.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATGSModel1.GuideBooking" Width="1.5" PointX="4" PointY="3.25" />
+        <EntityTypeShape EntityType="ATGSModel1.Hotel_Booking" Width="1.5" PointX="7.25" PointY="3.125" />
+        <EntityTypeShape EntityType="ATGSModel1.VehicalBooking" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ATGSModel1.Cost_Estimation" Width="1.5" PointX="9" PointY="0.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

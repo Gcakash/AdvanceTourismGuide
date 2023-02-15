@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AdvanceTourismGuide.Models.Map>
+@{
+    ViewBag.Title = "Visit";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<h2>Visit</h2>
+@{ int plcid = Convert.ToInt32(Session["placeid"].ToString());
+        }
+
+  
+
+    <div>
+        <h4>Map</h4>
+        <hr />
+        @foreach (var item in Model)
+        {
+            if (item.Place_Id == plcid)
+            {
+                <dl class="dl-horizontal">
+                    <dt>
+                        Place Id
+                    </dt>
+
+                    <dd>
+                        @item.Place_Id
+                    </dd>
+
+                    <dt>
+                        Longitude
+                    </dt>
+
+                    <dd>
+                        @item.Long
+                    </dd>
+
+                    <dt>
+                        Latitude
+                    </dt>
+
+                    <dd>
+                        @item.Lat
+                    </dd>
+
+                </dl>
+            }
+
+        }
+
+    </div>
+<p>
+ 
+    @Html.ActionLink("Back to List", "Index")
+</p>

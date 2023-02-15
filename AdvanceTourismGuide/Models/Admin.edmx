@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ATGSModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminInfo">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="City_Id" />
+          </Key>
+          <Property Name="City_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="District_Id" Type="int" Nullable="false" />
+          <Property Name="City_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cost_Estimation">
+          <Key>
+            <PropertyRef Name="Cost_Id" />
+          </Key>
+          <Property Name="Cost_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Place_Id" Type="int" Nullable="false" />
+          <Property Name="Avrage_Cost" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="District_Id" />
+          </Key>
+          <Property Name="District_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="District_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Province_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guide">
+          <Key>
+            <PropertyRef Name="Guide_Id" />
+          </Key>
+          <Property Name="Guide_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Place_Id" Type="int" Nullable="false" />
+          <Property Name="Guide_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Guide_Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Guide_Pic" Type="nvarchar(max)" />
+          <Property Name="Guide_Contac" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GuideBooking">
+          <Key>
+            <PropertyRef Name="GB_Id" />
+          </Key>
+          <Property Name="GB_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Place_Id" Type="int" Nullable="false" />
+          <Property Name="User_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Approve_Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="GB_Comment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="Hotel_Id" />
+          </Key>
+          <Property Name="Hotel_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Place_Id" Type="int" Nullable="false" />
+          <Property Name="Hotel_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hotel_Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Hotel_Pic" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Hotel_Dis" Type="nvarchar(max)" />
+          <Property Name="Hotel_Contact" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hotel_Booking">
+          <Key>
+            <PropertyRef Name="HB_Id" />
+          </Key>
+          <Property Name="HB_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Place_Id" Type="int" Nullable="false" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nchar" MaxLength="10" />
+          <Property Name="Approve_Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Coment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Maps">
+          <Key>
+            <PropertyRef Name="Map_Id" />
+          </Key>
+          <Property Name="Map_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Place_Id" Type="int" Nullable="false" />
+          <Property Name="Long" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lat" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Place">
+          <Key>
+            <PropertyRef Name="Place_Id" />
+          </Key>
+          <Property Name="Place_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City_Id" Type="int" Nullable="false" />
+          <Property Name="Place_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Place_Image" Type="nvarchar(max)" />
+          <Property Name="Discription" Type="nvarchar(max)" />
+          <Property Name="Place_Tag" Type="nvarchar(max)" />
+          <Property Name="Cost_Per_Day" Type="money" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Province_Id" />
+          </Key>
+          <Property Name="Province_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Province_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehical">
+          <Key>
+            <PropertyRef Name="Vehicale_id" />
+          </Key>
+          <Property Name="Vehicale_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Place_Id" Type="int" Nullable="false" />
+          <Property Name="Vehical_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vehical_Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vehical_Pic" Type="nvarchar(max)" />
+          <Property Name="Vehical_dis" Type="nvarchar(max)" />
+          <Property Name="Vehical_Contact" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VehicalBooking">
+          <Key>
+            <PropertyRef Name="VB_Id" />
+          </Key>
+          <Property Name="VB_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Place_Id" Type="int" Nullable="false" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Approve_Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Coment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="ATGSModel1StoreContainer">
+          <EntitySet Name="AdminInfo" EntityType="Self.AdminInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cost_Estimation" EntityType="Self.Cost_Estimation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guide" EntityType="Self.Guide" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GuideBooking" EntityType="Self.GuideBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotel_Booking" EntityType="Self.Hotel_Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maps" EntityType="Self.Maps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehical" EntityType="Self.Vehical" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicalBooking" EntityType="Self.VehicalBooking" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ATGSModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminInfo">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="City_Id" />
+          </Key>
+          <Property Name="City_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="District_Id" Type="Int32" Nullable="false" />
+          <Property Name="City_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="District_Id" />
+          </Key>
+          <Property Name="District_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="District_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Province_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Place">
+          <Key>
+            <PropertyRef Name="Place_Id" />
+          </Key>
+          <Property Name="Place_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City_Id" Type="Int32" Nullable="false" />
+          <Property Name="Place_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Place_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Place_Tag" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cost_Per_Day" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Province_Id" />
+          </Key>
+          <Property Name="Province_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Province_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ATGSEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminInfoes" EntityType="Self.AdminInfo" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="Places" EntityType="Self.Place" />
+          <EntitySet Name="Provinces" EntityType="Self.Province" />
+          <EntitySet Name="Maps" EntityType="ATGSModel1.Map" />
+          <EntitySet Name="Guides" EntityType="ATGSModel1.Guide" />
+          <EntitySet Name="Hotels" EntityType="ATGSModel1.Hotel" />
+          <EntitySet Name="Vehicals" EntityType="ATGSModel1.Vehical" />
+          <EntitySet Name="GuideBookings" EntityType="ATGSModel1.GuideBooking" />
+          <EntitySet Name="Hotel_Booking" EntityType="ATGSModel1.Hotel_Booking" />
+          <EntitySet Name="VehicalBookings" EntityType="ATGSModel1.VehicalBooking" />
+          <EntitySet Name="Cost_Estimation" EntityType="ATGSModel1.Cost_Estimation" />
+        </EntityContainer>
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="Map_Id" />
+          </Key>
+          <Property Name="Map_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Place_Id" Type="Int32" Nullable="false" />
+          <Property Name="Long" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Guide">
+          <Key>
+            <PropertyRef Name="Guide_Id" />
+          </Key>
+          <Property Name="Guide_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Place_Id" Type="Int32" Nullable="false" />
+          <Property Name="Guide_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Guide_Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Guide_Pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Guide_Contac" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="Hotel_Id" />
+          </Key>
+          <Property Name="Hotel_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Place_Id" Type="Int32" Nullable="false" />
+          <Property Name="Hotel_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_Pic" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_Dis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_Contact" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Vehical">
+          <Key>
+            <PropertyRef Name="Vehicale_id" />
+          </Key>
+          <Property Name="Vehicale_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Place_Id" Type="Int32" Nullable="false" />
+          <Property Name="Vehical_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Vehical_Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Vehical_Pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vehical_dis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vehical_Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GuideBooking">
+          <Key>
+            <PropertyRef Name="GB_Id" />
+          </Key>
+          <Property Name="GB_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Place_Id" Type="Int32" Nullable="false" />
+          <Property Name="User_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Approve_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GB_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Hotel_Booking">
+          <Key>
+            <PropertyRef Name="HB_Id" />
+          </Key>
+          <Property Name="HB_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Place_Id" Type="Int32" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Approve_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Coment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VehicalBooking">
+          <Key>
+            <PropertyRef Name="VB_Id" />
+          </Key>
+          <Property Name="VB_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Place_Id" Type="Int32" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Approve_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Coment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Cost_Estimation">
+          <Key>
+            <PropertyRef Name="Cost_Id" />
+          </Key>
+          <Property Name="Cost_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Place_Id" Type="Int32" Nullable="false" />
+          <Property Name="Avrage_Cost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ATGSModel1StoreContainer" CdmEntityContainer="ATGSEntities1">
+          <EntitySetMapping Name="AdminInfoes">
+            <EntityTypeMapping TypeName="ATGSModel1.AdminInfo">
+              <MappingFragment StoreEntitySet="AdminInfo">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="ATGSModel1.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+                <ScalarProperty Name="District_Id" ColumnName="District_Id" />
+                <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="ATGSModel1.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="District_Id" ColumnName="District_Id" />
+                <ScalarProperty Name="District_Name" ColumnName="District_Name" />
+                <ScalarProperty Name="Province_Id" ColumnName="Province_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Places">
+            <EntityTypeMapping TypeName="ATGSModel1.Place">
+              <MappingFragment StoreEntitySet="Place">
+                <ScalarProperty Name="Place_Id" ColumnName="Place_Id" />
+                <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+                <ScalarProperty Name="Place_Name" ColumnName="Place_Name" />
+                <ScalarProperty Name="Place_Image" ColumnName="Place_Image" />
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+                <ScalarProperty Name="Place_Tag" ColumnName="Place_Tag" />
+                <ScalarProperty Name="Cost_Per_Day" ColumnName="Cost_Per_Day" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="ATGSModel1.Province">
+              <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="Province_Id" ColumnName="Province_Id" />
+                <ScalarProperty Name="Province_Name" ColumnName="Province_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maps">
+            <EntityTypeMapping TypeName="ATGSModel1.Map">
+              <MappingFragment StoreEntitySet="Maps">
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="Place_Id" ColumnName="Place_Id" />
+                <ScalarProperty Name="Map_Id" ColumnName="Map_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guides">
+            <EntityTypeMapping TypeName="ATGSModel1.Guide">
+              <MappingFragment StoreEntitySet="Guide">
+                <ScalarProperty Name="Guide_Contac" ColumnName="Guide_Contac" />
+                <ScalarProperty Name="Guide_Pic" ColumnName="Guide_Pic" />
+                <ScalarProperty Name="Guide_Address" ColumnName="Guide_Address" />
+                <ScalarProperty Name="Guide_Name" ColumnName="Guide_Name" />
+                <ScalarProperty Name="Place_Id" ColumnName="Place_Id" />
+                <ScalarProperty Name="Guide_Id" ColumnName="Guide_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels">
+            <EntityTypeMapping TypeName="ATGSModel1.Hotel">
+              <MappingFragment StoreEntitySet="Hotel">
+                <ScalarProperty Name="Hotel_Contact" ColumnName="Hotel_Contact" />
+                <ScalarProperty Name="Hotel_Dis" ColumnName="Hotel_Dis" />
+                <ScalarProperty Name="Hotel_Pic" ColumnName="Hotel_Pic" />
+                <ScalarProperty Name="Hotel_Address" ColumnName="Hotel_Address" />
+                <ScalarProperty Name="Hotel_Name" ColumnName="Hotel_Name" />
+                <ScalarProperty Name="Place_Id" ColumnName="Place_Id" />
+                <ScalarProperty Name="Hotel_Id" ColumnName="Hotel_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicals">
+            <EntityTypeMapping TypeName="ATGSModel1.Vehical">
+              <MappingFragment StoreEntitySet="Vehical">
+                <ScalarProperty Name="Vehical_Contact" ColumnName="Vehical_Contact" />
+                <ScalarProperty Name="Vehical_dis" ColumnName="Vehical_dis" />
+                <ScalarProperty Name="Vehical_Pic" ColumnName="Vehical_Pic" />
+                <ScalarProperty Name="Vehical_Address" ColumnName="Vehical_Address" />
+                <ScalarProperty Name="Vehical_Name" ColumnName="Vehical_Name" />
+                <ScalarProperty Name="Place_Id" ColumnName="Place_Id" />
+                <ScalarProperty Name="Vehicale_id" ColumnName="Vehicale_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GuideBookings">
+            <EntityTypeMapping TypeName="ATGSModel1.GuideBooking">
+              <MappingFragment StoreEntitySet="GuideBooking">
+                <ScalarProperty Name="GB_Comment" ColumnName="GB_Comment" />
+                <ScalarProperty Name="Approve_Status" ColumnName="Approve_Status" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="User_name" ColumnName="User_name" />
+                <ScalarProperty Name="Place_Id" ColumnName="Place_Id" />
+                <ScalarProperty Name="GB_Id" ColumnName="GB_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotel_Booking">
+            <EntityTypeMapping TypeName="ATGSModel1.Hotel_Booking">
+              <MappingFragment StoreEntitySet="Hotel_Booking">
+                <ScalarProperty Name="Coment" ColumnName="Coment" />
+                <ScalarProperty Name="Approve_Status" ColumnName="Approve_Status" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Place_Id" ColumnName="Place_Id" />
+                <ScalarProperty Name="HB_Id" ColumnName="HB_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicalBookings">
+            <EntityTypeMapping TypeName="ATGSModel1.VehicalBooking">
+              <MappingFragment StoreEntitySet="VehicalBooking">
+                <ScalarProperty Name="Coment" ColumnName="Coment" />
+                <ScalarProperty Name="Approve_Status" ColumnName="Approve_Status" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Place_Id" ColumnName="Place_Id" />
+                <ScalarProperty Name="VB_Id" ColumnName="VB_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cost_Estimation">
+            <EntityTypeMapping TypeName="ATGSModel1.Cost_Estimation">
+              <MappingFragment StoreEntitySet="Cost_Estimation">
+                <ScalarProperty Name="Avrage_Cost" ColumnName="Avrage_Cost" />
+                <ScalarProperty Name="Place_Id" ColumnName="Place_Id" />
+                <ScalarProperty Name="Cost_Id" ColumnName="Cost_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

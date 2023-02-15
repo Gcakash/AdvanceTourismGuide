@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Welcome to Advance toursim guid system</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <style>
+        .nav-back-col {
+            background-color: black;
+        }
+        /* .navColor {
+            color: red;}*/
+
+        .SkyFooter {
+            background-color: black;
+            color: #00a651;
+            padding-top: 0px;
+            border-top: 1px solid #e7e7e7;
+            margin-bottom: 0px;
+        }
+
+        .bottom-footer {
+            border-top: 1px solid #00a651;
+            margin-top: 0px;
+            padding-top: 7px;
+            color: #00a651;
+        }
+
+        .footer-nav li {
+            display: inline;
+            padding: 0px 40px;
+        }
+
+        .row p {
+            color: #d4ff0f;
+        }
+
+        .footer-nav a {
+            color: #d4ff0f;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+   
+        <div class="navbar navbar-inverse navbar-fixed-top navbar-right nav-back-col">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @* @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-b" })*@
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav media-right  " style="color:black">
+                        <li>@Html.ActionLink("Admin Info", "Index", "AdminInfoes")</li>
+                        <li>@Html.ActionLink(" Manage Province", "Index", "Provinces")</li>
+                        <li>@Html.ActionLink(" Manage District", "Index", "Districts")</li> @* in the action link first is content to show
+        2nd is name of page and 3rd is name of folder or view*@
+                        <li>@Html.ActionLink("Manage City", "Index", "Cities")</li>
+                        <li>@Html.ActionLink("Mange Place", "Index", "Places")</li>
+                        <li>@Html.ActionLink("Manage User", "Index", "UserInfoes")</li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle " data-toggle="dropdown" href="#" style="font-size:17px;"> Booking Request <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="~/Hotel_Booking/Index">Hotel Booking Request</a></li>
+                                <li><a href="~/VehicalBookings/Index">Vehical Booking Request</a></li>
+                                <li><a href="~/GuideBookings/Index">Guide Booking Request</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                       <li><a href="#" class="btn btn-toolbar">
+
+                               <span class="glyphicon glyphicon-log-out"></span> Log out
+
+                                </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="container body-content">
+                @RenderBody()
+                </div>
+                <hr />
+                @*<footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+                <!-- Footer -->
+                <footer class="SkyFooter">
+                    <font face="Roboto Condensed" size="4">
+                        <center>
+                            <div class="container">
+                                <div class="row" style="margin-top: 7px;">
+                                    <p> &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &copy; @DateTime.Now.Year Akash Gc.</p>
+                                </div>
+                                <div class="bottom-footer">
+                                    <div class="col-md-12">
+                                        <ul class="footer-nav">
+                                            <li> <a href="https://www.facebook.com/"> Facebook </a> </li>
+                                            <li> <a href="https://twitter.com/"> Twitter </a> </li>
+                                            <li> <a href="https://plus.google.com/"> Google+ </a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </center>
+                    </font>
+                </footer>
+            </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+       
+</body>
+</html>

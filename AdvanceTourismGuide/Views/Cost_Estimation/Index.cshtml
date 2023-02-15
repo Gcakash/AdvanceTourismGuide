@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AdvanceTourismGuide.Models.Cost_Estimation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Place_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avrage_Cost)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Place_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Avrage_Cost)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Cost_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Cost_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Cost_Id })
+        </td>
+    </tr>
+}
+
+</table>

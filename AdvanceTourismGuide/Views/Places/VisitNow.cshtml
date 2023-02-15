@@ -1,0 +1,62 @@
+﻿@model IPagedList<AdvanceTourismGuide.Models.Place>
+
+@{
+    ViewBag.Title = "VisitNow";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+
+}
+@using PagedList;
+@using PagedList.Mvc;
+
+<div class="col-md-10">
+
+    @* @Html.EditorFor(model => model.orderEntry.RestaurantId, new { htmlAttributes = new { @class = "form-control" } })*@
+
+    @using (Html.BeginForm("VisitNow", "Places", FormMethod.Get))
+    {
+
+
+
+        <span>
+            @Html.DropDownList("City_Id",  ViewBag.districtList as SelectList,"select district",new { @class
+          ="form-control"})
+        </span>
+
+        <span>  </span> <span> <input type="text" name="searchstring" class="searchbtn" /> </span>
+        <span> <input type="submit" value="Search" class="btn btn-primary " /></span>
+
+        if (ViewBag.ResultsFor == null)
+        {
+
+
+            <h1>entering name is not avilable</h1>
+        }
+
+
+    }
+
+</div>
+
+
+
+    <h1>hello</h1>
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6">
+
+            <img src="@Url.Content(item.Place_Image)" style="width:400px; height:300px" />
+
+            <div>
+                @item.Place_Name
+
+            </div>
+            <div>
+                @item.Discription
+            </div>
+            <
+        </div>
+    }
+
+    @Html.PagedListPager(Model, i => Url.Action("VisitNow", "Places", new { i }))
+

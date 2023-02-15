@@ -1,0 +1,94 @@
+﻿@model IPagedList<AdvanceTourismGuide.Models.Place>
+@{
+    ViewBag.Title = "UserHome";
+    Layout = "~/Views/Shared/UserLayoutPage.cshtml";
+}
+
+@using PagedList;
+@using PagedList.Mvc;
+
+<style>
+    .body {
+        margin-left: 10%;
+        margin-top: 5px;
+        position: relative;
+    }
+
+    .searchbtn {
+        margin-left: 10%;
+        margin-top: 7px;
+    }
+
+    .ull {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333333;
+    }
+
+    ull a {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+</style>
+
+<div style="font-size:20px;color:black;height:50px;width:100%;background-color:#ae49ab70">
+    @using (Html.BeginForm())
+    {
+
+
+
+        <span>  </span> <span> <input type="text" name="searchstring" class="searchbtn" /> </span>
+        <span> <input type="submit" value="Search" class="btn btn-primary " /></span>
+
+        if (ViewBag.ResultsFor == null)
+        {
+        
+        
+            <h1>entering name is not avilable</h1>
+        }
+
+
+    }
+</div>
+<div>
+   
+   
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="row body">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6">
+
+                <img src="@Url.Content(item.Place_Image)" style="width:500px; height:400px" />
+
+                <div style="color:brown;">
+                    <h1> @item.Place_Name  </h1>
+
+                </div>
+                <div>
+                    @item.Discription
+                </div>
+                
+
+
+                
+                <div style="overflow:hidden;list-style-type:none">
+                    <h2> <a style="overflow:hidden;list-style-type:none" href="/Places/VisitNowHome?placeid=@item.Place_Id">VisitNow </a></h2>
+                    <h2 clss="btn btn-primary"> <a href="/Maps/MapHome?placeid=@item.Place_Id">Location</a></h2>
+
+
+                </div>
+            </div>
+        }
+
+    </div>
+}
+
+@Html.PagedListPager(Model, i => Url.Action("UserPLace", "Places", new { i }))

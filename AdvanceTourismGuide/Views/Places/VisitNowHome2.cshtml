@@ -1,0 +1,79 @@
+﻿@model IEnumerable<AdvanceTourismGuide.Models.Place>
+@{
+    ViewBag.Title = "VisitNowHome2";
+    Layout = "~/Views/Shared/UserLayoutPage.cshtml";
+}
+
+@{ int plcid = Convert.ToInt32(Session["placeidHome"].ToString());
+}
+
+
+<style>
+    /* Add a black background color to the top navigation */
+    .topnav {
+        background-color: #333;
+        overflow: hidden;
+    }
+
+        /* Style the links inside the navigation bar */
+        .topnav a {
+            float: left;
+            color: yellow;
+            text-align: center;
+            padding: 14px 30px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+            /* Change the color of links on hover */
+            .topnav a:hover {
+                background-color: #4CAF50;
+                color: black;
+            }
+
+            /* Add a color to the active/current link */
+            .topnav a.active {
+                background-color: #4CAF50;
+                color: yellow;
+            }
+</style>
+
+
+
+
+
+<div class="container body-content ">
+
+    <div class="topnav">
+        <a class="active" href="~/Places/VisitNowHome2">Your Destination</a>
+        <a href="~/Hotels/HotelHome">Hotel Booking</a>
+        <a href="~/Vehicals/VehicalHome">Vehical Booking</a>
+        <a href="~/Guides/GuideHome">Guide Booking</a>
+
+    </div>
+
+    
+
+    @foreach (var item in Model)
+    {
+        if (item.Place_Id == plcid)
+        {
+            <div class="col-md-6">
+
+                <img src="@Url.Content(item.Place_Image)" style="width:400px; height:300px" />
+
+                <div>
+                    @item.Place_Name
+
+                </div>
+                <div>
+                    @item.Discription
+                </div>
+
+            </div>
+        }
+    }
+
+
+</div>
+

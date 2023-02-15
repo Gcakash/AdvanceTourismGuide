@@ -1,0 +1,35 @@
+﻿@model AdvanceTourismGuide.Models.City
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>City</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.District_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.District_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.City_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

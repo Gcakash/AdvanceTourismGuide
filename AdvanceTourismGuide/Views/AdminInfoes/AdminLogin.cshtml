@@ -1,0 +1,79 @@
+﻿@model AdvanceTourismGuide.Models.AdminInfo
+@{
+    ViewBag.Title = "AdminLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<style>
+    .login {
+        background-color: rgba(21, 42, 51, 0.60);
+        height: 500px;
+        width: 500px;
+    }
+
+    .loginBotton {
+        margin-left: 35%;
+        font-size: 30px;
+        background-color: yellow;
+    }
+
+    .loginBackground {
+        height: 650px;
+        width: 100%;
+        background-image: url("/Content/images/9.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: -29px;
+        /* opacity: 0.7;
+        */
+    }
+</style>
+<div class="loginBackground">
+    <div class="container body-content login">
+       <br />
+        <h1 style="opacity:1;color:yellowgreen;font-size:50px;font-family:'Times New Roman';margin-left:10px"> Welcome </h1>
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <br /><br />
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group"style="opacity:1;color:yellowgreen">
+                    @Html.LabelFor(model => model.AdminName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AdminName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AdminName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group"style="opacity:1;color:yellowgreen">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <input type="submit" name="Login" value="Login" class="alert-success loginBotton" />
+                @if (ViewBag.message == null && ViewBag.triedOnce == "yes")
+                {
+                    <br /><br /> <span style="padding:5px;color:white;background-color:red;">Username or password not matched,plese log in again or resister.@Html.ActionLink("Resister", "Create")</span>
+                }
+
+            </div>
+
+
+        }
+
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </div>
+</div>
